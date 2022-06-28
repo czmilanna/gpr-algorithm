@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "gpr-algorithm"
+version = "1.0.0"
+description = "Gene Programming Rules (GPR) implementation"
+authors = [
+    "Anna Czmil <czmilanna@gmail.com>",
+    "Jacek Kluska <jacklu@prz.edu.pl>",
+    "Sylwester Czmil <sylwekczmil@gmail.com>"
+]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+deap = "1.3.1"
+geppy = "0.1.3"
+numpy = "1.21.6"
+scikit-learn = "1.0.2"
+sympy = "1.9"
+
+[tool.poetry.dev-dependencies]
+setuptools = "57.5.0"
+cacp = "^0.2.0"
+pytest = "^7.1.2"
+Sphinx = "^4.5.0"
+tox = "^3.25.0"
+flake8 = "^4.0.1"
+pydata-sphinx-theme = "^0.9.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
