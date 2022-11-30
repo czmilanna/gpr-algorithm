@@ -15,7 +15,7 @@ def test_haberman():
         Path(__file__).parent.joinpath('data').joinpath('haberman.csv')
     )
 
-    target_names = ['negative', 'positive']
+    target_names = ['Died', 'Survived']
     feature_names = [
         'Age', 'Year', 'Positive'
     ]
@@ -41,12 +41,24 @@ def test_haberman():
     np.testing.assert_almost_equal(acc, 0.761437908496732)
 
     assert gpr.rules == [
-        'IF Age is Medium THEN positive | Support: 0.2108',
-        'IF Positive is High THEN positive | Support: 0.1434',
-        'IF Age is High AND Positive is High THEN positive | Support: 0.0609',
-        'ELSE negative'
+        'IF Age is Medium THEN Survived | Support: 0.2108',
+        'IF Positive is High THEN Survived | Support: 0.1434',
+        'IF Age is High AND Positive is High THEN Survived | Support: 0.0609',
+        'ELSE Died'
     ]
 
     assert gpr.ranking == [
         'Age: 0.6000', 'Positive: 0.4000'
     ]
+    print(gpr.hall_of_fame[0])
+
+    """
+    rules equal to chromosome:
+    sum(
+        mul(a000_is_high, a002_is_high),
+        a002_is_high,
+        mul(a000_is_high, a000_is_low)
+    )
+    witch equal to equation:
+    age_is_high * age_is_low + positive_is_high + age_is_high * positive_is_high
+    """
